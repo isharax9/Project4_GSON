@@ -25,12 +25,12 @@ public class X extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         Gson gson = new Gson();
-        User user = gson.fromJson(request.getReader(), User.class);
+        JsonObject jsonObject1 = gson.fromJson(request.getReader(), JsonObject.class);
 
-        System.out.println(user.getId());
-        System.out.println(user.getName());
-        System.out.println(user.getAge());
-        System.out.println(user.getCountry());
+        System.out.println(jsonObject1.get("id").getAsInt());
+        System.out.println(jsonObject1.get("name").getAsString());
+        System.out.println(jsonObject1.get("age").getAsInt());
+        System.out.println(jsonObject1.get("country").getAsString());
 
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("message", "Success");
